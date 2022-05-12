@@ -14,13 +14,14 @@ class PostExport implements FromCollection, WithHeadings, WithMapping
      */
     public function collection()
     {
-        return Post::select('name', 'price')->get();
+        return Post::select('name', 'test', 'price')->get();
     }
 
     public function headings(): array
     {
         return [
             'ten',
+            'test',
             'price'
         ];
     }
@@ -45,12 +46,14 @@ class PostExport implements FromCollection, WithHeadings, WithMapping
             //Return a summary row
             return [
                 'Total sum:',
+                '',
                 $row['total']
             ];
         } else {
             //Return a normal data row
             return [
                 $row->name,
+                $row->test,
                 $row->price
             ];
         }
